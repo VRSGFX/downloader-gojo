@@ -649,4 +649,619 @@ document.getElementById('url').addEventListener('keypress', (e) => {
 </script>
 
 </body>
+</html>  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* efek background liquid */
+body::before{
+  content:'';
+  position:fixed;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle at 30% 40%, rgba(255,255,255,0.08), transparent 50%),
+             radial-gradient(circle at 70% 60%, rgba(255,255,255,0.05), transparent 50%);
+  z-index:-1;
+  animation:liquidMove 25s ease infinite;
+}
+
+@keyframes liquidMove{
+  0%,100%{transform:translate(0,0) scale(1);}
+  33%{transform:translate(3%,2%) scale(1.02);}
+  66%{transform:translate(-2%,-1%) scale(0.98);}
+}
+
+/* SCREEN */
+.screen{
+  width:100%;
+  max-width:500px;
+  padding:20px;
+  display:none;
+  animation:fadeIn 0.5s cubic-bezier(0.2,0.9,0.3,1.1);
+}
+.screen.active{display:block;}
+
+@keyframes fadeIn{
+  0%{
+    opacity:0;
+    transform:scale(0.97) translateY(20px);
+  }
+  100%{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+/* TITLE */
+h1{
+  text-align:center;
+  margin-bottom:25px;
+  font-size:42px;
+  font-weight:800;
+  letter-spacing:-1px;
+  color:var(--white);
+  position:relative;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.grid .card:nth-child(3){
+  grid-column:1/3;
+  width:70%;
+  margin:auto;
+}
+
+/* CARD - EFEK LIQUID GLASS */
+.card{
+  background:var(--card);
+  border-radius:24px;
+  padding:25px;
+  text-align:center;
+  cursor:pointer;
+  transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter:blur(10px);
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 10px 30px -15px rgba(0,0,0,0.5);
+}
+
+/* Efek liquid tepian PUTIH */
+.card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:24px;
+  padding:1.5px;
+  background:linear-gradient(145deg, var(--white), rgba(255,255,255,0.1), transparent 80%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+  opacity:0.6;
+  transition:opacity 0.4s;
+}
+
+.card:hover{
+  transform:translateY(-8px) scale(1.02);
+  background:#151a22;
+}
+
+.card:hover::before{
+  opacity:1;
+  background:linear-gradient(145deg, var(--white), rgba(255,255,255,0.3), transparent 70%);
+}
+
+/* WARNA ICON */
+.card .fa-tiktok{
+  color:var(--white); /* PUTIH */
+  font-size:32px;
+  margin-bottom:12px;
+  transition:transform 0.3s;
+}
+
+.card .fa-youtube{
+  color:var(--youtube-red); /* MERAH KHUSUS YT */
+  font-size:32px;
+  margin-bottom:12px;
+  transition:transform 0.3s;
+}
+
+.card .fa-instagram{
+  color:var(--white); /* PUTIH */
+  font-size:32px;
+  margin-bottom:12px;
+  transition:transform 0.3s;
+}
+
+.card:hover i{
+  transform:scale(1.2) rotate(5deg);
+}
+
+.card h3{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:5px;
+  color:#e5e7eb;
+}
+
+/* INPUT PAGE */
+.main-card{
+  background:var(--card);
+  padding:25px;
+  border-radius:28px;
+  box-shadow:0 20px 35px -10px rgba(0,0,0,0.5);
+  position:relative;
+  overflow:hidden;
+  animation:cardFloat 0.5s ease;
+}
+
+/* Efek liquid glass di main card */
+.main-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:28px;
+  padding:1.5px;
+  background:linear-gradient(145deg, var(--white), rgba(255,255,255,0.1), transparent 80%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+@keyframes cardFloat{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+input{
+  width:100%;
+  padding:16px 18px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  background:#0f1219;
+  color:#fff;
+  margin-bottom:12px;
+  font-size:15px;
+  outline:none;
+  transition:all 0.3s;
+}
+
+input:focus{
+  border-color:var(--white);
+  box-shadow:0 0 0 3px rgba(255,255,255,0.1);
+}
+
+/* TOMBOL ABU-ABU */
+button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:18px;
+  background:var(--gray);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+button:hover{
+  transform:translateY(-2px);
+  background:var(--gray-light);
+}
+
+button:active{
+  transform:translateY(0);
+}
+
+/* BACK BTN */
+.back{
+  margin-bottom:20px;
+  cursor:pointer;
+  color:#aaa;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 18px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:50px;
+  transition:all 0.3s;
+  font-size:14px;
+}
+
+.back:hover{
+  background:rgba(255,255,255,0.1);
+  border-color:var(--white);
+  color:#fff;
+  transform:translateX(-5px);
+}
+
+.back i{
+  font-size:14px;
+  transition:transform 0.3s;
+}
+
+.back:hover i{
+  transform:translateX(-3px);
+}
+
+/* PREVIEW */
+.preview{
+  display:none;
+  margin-top:20px;
+  animation:previewFade 0.5s ease;
+}
+
+@keyframes previewFade{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.preview img{
+  width:100%;
+  border-radius:20px;
+  border:1px solid var(--border);
+  margin-bottom:15px;
+  transition:transform 0.4s;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.preview img:hover{
+  transform:scale(1.02);
+  border-color:var(--white);
+}
+
+.btns{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:10px;
+}
+
+.btns button{
+  width:100%;
+  padding:14px;
+  border-radius:16px;
+  font-size:14px;
+}
+
+/* VIDEO INFO */
+#videoInfo{
+  margin-bottom:15px;
+  color:#d1d5db;
+  font-size:14px;
+  padding:10px;
+  background:rgba(255,255,255,0.03);
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+/* LOADING */
+.loading{
+  display:none;
+  text-align:center;
+  margin:20px 0;
+  padding:20px;
+  background:rgba(255,255,255,0.03);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.spinner{
+  width:30px;
+  height:30px;
+  border:3px solid rgba(255,255,255,0.1);
+  border-top:3px solid var(--white);
+  border-radius:50%;
+  display:inline-block;
+  animation:spin 0.8s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* NOTIFIKASI */
+.notification{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:rgba(20,20,30,0.95);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--white);
+  border-radius:50px;
+  padding:12px 24px;
+  color:white;
+  font-size:16px;
+  font-weight:500;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  transform:translateX(400px);
+  transition:transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-left:4px solid var(--white);
+}
+
+.notification.show{
+  transform:translateX(0);
+}
+
+.notification i{
+  color:var(--white);
+  font-size:20px;
+  animation:heartBeat 1.5s ease infinite;
+}
+
+@keyframes heartBeat{
+  0%,100%{transform:scale(1);}
+  25%{transform:scale(1.2);}
+  50%{transform:scale(1);}
+  75%{transform:scale(1.1);}
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  margin-top:30px;
+  font-size:13px;
+  color:#6b7280;
+  padding:10px;
+}
+
+.footer span{
+  color:var(--white);
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<!-- රධරධරධරධරධ -->
+<div class="notification" id="notification">
+  <span>hai sayang 😙</span
+</div>
+
+<!-- HOME -->
+<div class="screen active" id="home">
+  <h1>DOWNLOADER</h1>
+
+  <div class="grid">
+    <div class="card" onclick="openPage('tiktok')">
+      <i class="fab fa-tiktok"></i>
+      <h3>TikTok</h3>
+    </div>
+
+    <div class="card" onclick="openPage('youtube')">
+      <i class="fab fa-youtube"></i>
+      <h3>YouTube</h3>
+    </div>
+
+    <div class="card" onclick="openPage('instagram')">
+      <i class="fab fa-instagram"></i>
+      <h3>Instagram</h3>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2026 <span>Thank you to all the Gojovvip team </span>
+  </div>
+</div>
+
+<!-- රධරධරධරධරධ -->
+<div class="screen" id="downloader">
+
+  <div class="back" onclick="back()">
+    <i class="fas fa-arrow-left"></i> Kembali
+  </div>
+
+  <div class="main-card">
+    <input id="url" placeholder="Masukkan link...">
+    <button onclick="process()">PROSES VIDEO</button>
+
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p style="margin-top:10px; color:#9ca3af;">Memproses video...</p>
+    </div>
+
+    <div class="preview" id="preview">
+      <img id="thumb">
+      <div id="videoInfo"></div>
+      <div class="btns" id="btns"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <i class="far fa-copyright"></i> 2026 <span>Thank you to all the gojovvip team </span>
+  </div>
+</div>
+
+<script>
+// රධරධරධරධරධ
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('notification').classList.add('show');
+    
+    // රධරධරධරධරධ
+    setTimeout(function() {
+      document.getElementById('notification').classList.remove('show');
+    }, 3000);
+  }, 500);
+});
+
+let mode = '';
+let currentUrl = '';
+let videoData = null;
+
+function openPage(type){
+  mode = type;
+  document.getElementById('home').classList.remove('active');
+  document.getElementById('downloader').classList.add('active');
+  document.getElementById('url').value = '';
+  document.getElementById('preview').style.display = 'none';
+}
+
+function back(){
+  document.getElementById('downloader').classList.remove('active');
+  document.getElementById('home').classList.add('active');
+}
+
+/* රධරධරධරධරධ */
+async function process(){
+  const url = document.getElementById('url').value.trim();
+  if(!url) return alert('Masukkan link!');
+  
+  currentUrl = url;
+
+  // රධරධරධරධරධ
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('preview').style.display = 'none';
+  document.getElementById('btns').innerHTML = '';
+
+  try {
+    if(mode === 'tiktok'){
+      // රධරධරධරධරධ
+      const res = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`);
+      const data = await res.json();
+      
+      if(data.code !== 0) throw new Error('Gagal ambil data');
+      
+      videoData = {
+        video: data.data.play,
+        audio: data.data.music,
+        title: data.data.title,
+        thumbnail: data.data.cover,
+        duration: data.data.duration,
+        author: data.data.author?.nickname
+      };
+      
+      document.getElementById('thumb').src = videoData.thumbnail;
+      document.getElementById('videoInfo').innerHTML = `
+        <i class="fas fa-user"></i> ${videoData.author} · 
+        <i class="fas fa-clock"></i> ${formatDuration(videoData.duration)}<br>
+        <small style="color:#9ca3af;">${videoData.title.substring(0,50)}...</small>
+      `;
+      
+      document.getElementById('btns').innerHTML = `
+        <button onclick="downloadVideo('video')">
+          <i class="fas fa-video"></i> Download Video HD
+        </button>
+        <button onclick="downloadVideo('audio')">
+          <i class="fas fa-music"></i> Download Audio MP3
+        </button>
+      `;
+    }
+    
+    else if(mode === 'youtube'){
+      // රධරධරධරධරධ
+      videoData = { url: url };
+      
+      // රධරධරධරධරධ
+      let id = '';
+      if(url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
+      else if(url.includes('v=')) id = url.split('v=')[1].split('&')[0];
+      
+      document.getElementById('thumb').src = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : 'https://via.placeholder.com/600x340?text=YouTube';
+      document.getElementById('videoInfo').innerHTML = `<i class="fab fa-youtube" style="color:#ff0000;"></i> YouTube Video`;
+      
+      document.getElementById('btns').innerHTML = `
+        <button onclick="downloadYouTube('mp4')">
+          <i class="fas fa-video"></i> Download MP4
+        </button>
+        <button onclick="downloadYouTube('mp3')">
+          <i class="fas fa-music"></i> Download MP3
+        </button>
+      `;
+    }
+    
+    else if(mode === 'instagram'){
+      // රධරධරධරධරධ
+      videoData = { url: url };
+      document.getElementById('thumb').src = 'https://via.placeholder.com/600x600?text=Instagram+Media';
+      document.getElementById('videoInfo').innerHTML = `<i class="fab fa-instagram" style="color:#ffffff;"></i> Instagram Media`;
+      
+      document.getElementById('btns').innerHTML = `
+        <button onclick="downloadInstagram()">
+          <i class="fas fa-download"></i> Download Media
+        </button>
+      `;
+    }
+    
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('preview').style.display = 'block';
+    
+  } catch(error) {
+    document.getElementById('loading').style.display = 'none';
+    alert('Gagal memproses video. Coba lagi.');
+    console.error(error);
+  }
+}
+
+/* රධරධරධරධරධ */
+function downloadVideo(type){
+  if(!videoData) return;
+  
+  if(type === 'video'){
+    window.open(videoData.video, '_blank');
+  } else {
+    window.open(videoData.audio, '_blank');
+  }
+}
+
+/* DOWNLOAD YOUTUBE */
+function downloadYouTube(format){
+  if(!videoData) return;
+  window.open(`https://savethevideo.com/id?url=${encodeURIComponent(videoData.url)}`, '_blank');
+}
+
+/* රධරධරධරධරධ */
+function downloadInstagram(){
+  if(!videoData) return;
+  window.open(`https://savethevideo.com/id?url=${encodeURIComponent(videoData.url)}`, '_blank');
+}
+
+/* රධරධරධරධරධ */
+function formatDuration(seconds){
+  if(!seconds) return '00:00';
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+}
+
+/* රධරධරධරධරධ */
+document.getElementById('url').addEventListener('keypress', (e) => {
+  if(e.key === 'Enter') process();
+});
+</script>
+
+</body>
 </html>
