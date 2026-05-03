@@ -54,7 +54,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* TOP BAR - SAMA KAYA DASHBOARD */
+        /* TOP BAR */
         .top-bar {
             position: sticky;
             top: 0;
@@ -69,25 +69,11 @@
         .top-bar-content {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             max-width: 500px;
             margin: 0 auto;
             padding: 0 20px;
-        }
-        .menu-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            background: #1A1A1A;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #FFFFFF;
-            font-size: 20px;
-            visibility: hidden;
+            position: relative;
         }
         .page-title {
             font-size: 18px;
@@ -97,10 +83,6 @@
         .page-title span {
             color: #b91c1c;
             animation: softGlow 2s ease-in-out infinite alternate;
-        }
-        .top-bar-right {
-            width: 42px;
-            visibility: hidden;
         }
 
         /* BANNER */
@@ -517,69 +499,46 @@
             margin-left: 28px;
         }
 
-        /* BOTTOM NAV - SAMA KAYA DASHBOARD */
-        .bottom-nav {
+        /* BOTTOM BAR DOWNLOADER STATUS */
+        .bottom-bar {
             position: fixed;
             bottom: 20px;
             left: 20px;
             right: 20px;
-            height: 70px;
+            height: 60px;
             background: rgba(18, 18, 24, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 40px;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
             z-index: 100;
             max-width: 500px;
             margin: 0 auto;
+            padding: 0 20px;
         }
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #8A94A6;
-            gap: 4px;
-            padding: 8px 0;
-            width: 25%;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-        .nav-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
+        .logo-download {
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+            gap: 10px;
         }
-        .nav-item i {
+        .logo-download i {
             font-size: 20px;
+            color: #b91c1c;
         }
-        .nav-item span {
-            font-size: 10px;
-            font-weight: 500;
-        }
-        .nav-item.active .nav-icon {
-            background: #b91c1c;
-            transform: translateY(-6px);
-            box-shadow: 0 5px 15px rgba(185, 28, 28, 0.3);
-        }
-        .nav-item.active i {
+        .logo-download span {
+            font-size: 14px;
+            font-weight: 600;
             color: white;
         }
-        .nav-item.active span {
-            color: #b91c1c;
-            font-weight: 600;
-        }
-        .nav-item:hover:not(.active) .nav-icon {
+        .status-download {
             background: rgba(185, 28, 28, 0.1);
-            transform: translateY(-3px);
-        }
-        .nav-item:hover:not(.active) i {
+            border: 1px solid rgba(185, 28, 28, 0.2);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 12px;
             color: #b91c1c;
         }
 
@@ -599,9 +558,7 @@
     <!-- TOP BAR -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <div class="menu-btn"><i class="fa-solid fa-bars"></i></div>
             <div class="page-title">GOJO <span>DOWNLOADER</span></div>
-            <div class="top-bar-right"></div>
         </div>
     </div>
 
@@ -688,13 +645,16 @@
         </div>
     </div>
 
-    <!-- BOTTOM NAV - SAMA KAYA DASHBOARD -->
-    <nav class="bottom-nav">
-        <div class="nav-item" id="navHome"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span>HOME</span></div>
-        <div class="nav-item active" id="navDownloader"><div class="nav-icon"><i class="fa-solid fa-download"></i></div><span>DOWNLOADER</span></div>
-        <div class="nav-item" id="navBug"><div class="nav-icon"><i class="fa-solid fa-skull"></i></div><span>BUG TOOLS</span></div>
-        <div class="nav-item" id="navLogout"><div class="nav-icon"><i class="fa-solid fa-right-from-bracket"></i></div><span>LOGOUT</span></div>
-    </nav>
+    <!-- BOTTOM BAR STATUS -->
+    <div class="bottom-bar">
+        <div class="logo-download">
+            <i class="fa-solid fa-download"></i>
+            <span>DOWNLOADER</span>
+        </div>
+        <div class="status-download">
+            <i class="fa-regular fa-circle-check"></i> READY
+        </div>
+    </div>
 
     <div class="toast-container" id="toastContainer"></div>
 
@@ -714,12 +674,6 @@
                 setTimeout(() => toast.remove(), 300);
             }, 3000);
         }
-
-        // NAVIGASI KE PAGE LAIN
-        document.getElementById('navHome').onclick = () => window.location.href = '/dashboard';
-        document.getElementById('navDownloader').onclick = () => window.location.href = '/downloader';
-        document.getElementById('navBug').onclick = () => window.location.href = '/execution';
-        document.getElementById('navLogout').onclick = () => window.location.href = '/logout';
 
         let mode = '';
         let videoData = null;
