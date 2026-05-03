@@ -34,63 +34,73 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @keyframes softGlow {
-            0% { text-shadow: 0 0 2px rgba(220, 38, 38, 0.2); }
-            100% { text-shadow: 0 0 6px rgba(220, 38, 38, 0.45); }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
-
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes softGlow {
+            0% { text-shadow: 0 0 2px rgba(185, 28, 28, 0.2); }
+            100% { text-shadow: 0 0 6px rgba(185, 28, 28, 0.45); }
+        }
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        /* TOP BAR */
+        /* TOP BAR - SAMA KAYA DASHBOARD */
         .top-bar {
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(18, 18, 24, 0.9);
-            backdrop-filter: blur(8px);
+            background: rgba(18, 18, 24, 0.95);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             padding: 12px 0;
             margin-bottom: 20px;
             animation: fadeInDown 0.5s ease;
         }
-
         .top-bar-content {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             max-width: 500px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative;
         }
-
+        .menu-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            background: #1A1A1A;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #FFFFFF;
+            font-size: 20px;
+            visibility: hidden;
+        }
         .page-title {
             font-size: 18px;
             font-weight: 700;
             color: #FFFFFF;
         }
-
         .page-title span {
-            color: #dc2626;
+            color: #b91c1c;
             animation: softGlow 2s ease-in-out infinite alternate;
+        }
+        .top-bar-right {
+            width: 42px;
+            visibility: hidden;
         }
 
         /* BANNER */
@@ -104,11 +114,10 @@
             animation: fadeInUp 0.5s ease;
             transition: all 0.2s ease;
         }
-
         .banner:hover {
             transform: translateY(-2px);
+            border-color: #b91c1c;
         }
-
         .banner-img {
             position: absolute;
             width: 100%;
@@ -118,19 +127,16 @@
             background-position: center;
             transition: transform 0.4s ease;
         }
-
         .banner:hover .banner-img {
             transform: scale(1.03);
         }
-
         .banner-overlay {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(220, 38, 38, 0.25), rgba(0, 0, 0, 0.75));
+            background: linear-gradient(135deg, rgba(185, 28, 28, 0.25), rgba(0, 0, 0, 0.75));
             z-index: 1;
         }
-
         .banner-content {
             position: relative;
             z-index: 2;
@@ -140,30 +146,25 @@
             flex-direction: column;
             justify-content: flex-end;
         }
-
         .banner-text h2 {
             font-size: 26px;
             font-weight: 800;
             margin-bottom: 5px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
-
         .banner-text p {
             color: #C0C0C0;
             font-size: 13px;
         }
-
         .text-red {
-            color: #dc2626;
+            color: #b91c1c;
             font-weight: 700;
         }
-
         .banner-stats {
             display: flex;
             gap: 12px;
             margin-top: 10px;
         }
-
         .banner-stat {
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
@@ -176,13 +177,11 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.2s ease;
         }
-
         .banner-stat:hover {
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: #b91c1c;
         }
-
         .banner-stat i {
-            color: #dc2626;
+            color: #b91c1c;
         }
 
         /* INFO CARD */
@@ -195,58 +194,49 @@
             animation: fadeInUp 0.5s ease 0.05s both;
             transition: all 0.2s ease;
         }
-
         .info-card:hover {
             border-color: rgba(255, 255, 255, 0.1);
         }
-
         .info-header {
             display: flex;
             align-items: center;
             gap: 12px;
             margin-bottom: 12px;
         }
-
         .info-header i {
             font-size: 24px;
-            color: #dc2626;
+            color: #b91c1c;
             animation: softGlow 2s ease-in-out infinite alternate;
         }
-
         .info-header h2 {
             font-size: 18px;
             font-weight: 700;
         }
-
         .info-desc {
             font-size: 14px;
             color: #8A94A6;
             margin-bottom: 15px;
             padding-left: 36px;
         }
-
         .info-stats {
             display: flex;
             gap: 15px;
         }
-
         .info-stat {
             flex: 1;
             background: rgba(255, 255, 255, 0.03);
             padding: 12px;
             border-radius: 12px;
         }
-
         .info-stat span {
             font-size: 11px;
             color: #8A94A6;
             display: block;
             margin-bottom: 4px;
         }
-
         .info-stat strong {
             font-size: 16px;
-            color: #dc2626;
+            color: #b91c1c;
         }
 
         /* GRID PLATFORM */
@@ -257,7 +247,6 @@
             margin-bottom: 20px;
             animation: fadeInUp 0.5s ease 0.1s both;
         }
-
         .platform-card {
             background: #121218;
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -271,38 +260,31 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-
         .platform-card:hover {
             transform: translateY(-3px);
-            border-color: #dc2626;
-            background: rgba(220, 38, 38, 0.03);
+            border-color: #b91c1c;
+            background: rgba(185, 28, 28, 0.05);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
-
         .platform-card i {
             font-size: 32px;
             transition: all 0.2s ease;
         }
-
-        .platform-card .fa-tiktok { color: #FFFFFF; }
-        .platform-card .fa-youtube { color: #FF0000; }
-        .platform-card .fa-instagram { 
+        .fa-tiktok { color: #FFFFFF; }
+        .fa-youtube { color: #FF0000; }
+        .fa-instagram { 
             background: radial-gradient(circle at 30% 110%, #ffdb13, #fd1d1d, #833ab4, #4a1d8c, #131b8f);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-
         .platform-card:hover i {
             transform: scale(1.1);
         }
-
         .platform-card h4 {
             font-size: 14px;
             font-weight: 700;
-            color: #FFFFFF;
         }
-
         .platform-card p {
             font-size: 11px;
             color: #8A94A6;
@@ -328,14 +310,9 @@
             transition: all 0.2s ease;
             animation: fadeInUp 0.5s ease;
         }
-
         .back:hover {
-            color: #dc2626;
+            color: #b91c1c;
             transform: translateX(-5px);
-        }
-
-        .back i {
-            font-size: 14px;
         }
 
         /* INPUT CARD */
@@ -347,19 +324,15 @@
             animation: fadeInUp 0.5s ease;
             transition: all 0.2s ease;
         }
-
         .input-card:hover {
             border-color: rgba(255, 255, 255, 0.1);
         }
-
         .input-box {
             margin-bottom: 20px;
         }
-
         .input-wrapper {
             position: relative;
         }
-
         .input-wrapper i {
             position: absolute;
             left: 16px;
@@ -369,34 +342,31 @@
             font-size: 18px;
             transition: all 0.2s ease;
         }
-
         .cyber-input {
             width: 100%;
             padding: 16px 16px 16px 50px;
             background: #0A0A0F;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-left: 3px solid #dc2626;
+            border-left: 3px solid #b91c1c;
             border-radius: 18px;
             color: #FFFFFF;
             font-size: 14px;
             transition: all 0.2s ease;
         }
-
         .cyber-input:focus {
             outline: none;
-            border-color: #dc2626;
-            box-shadow: 0 0 20px rgba(220, 38, 38, 0.15);
+            border-color: #b91c1c;
+            box-shadow: 0 0 20px rgba(185, 28, 28, 0.15);
         }
-
         .cyber-input:focus + i {
-            color: #dc2626;
+            color: #b91c1c;
         }
 
         /* TOMBOL PROSES */
         .process-btn {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            background: linear-gradient(135deg, #b91c1c, #991b1b);
             border: none;
             border-radius: 18px;
             color: white;
@@ -409,18 +379,12 @@
             gap: 10px;
             transition: all 0.3s ease;
         }
-
         .process-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+            box-shadow: 0 10px 20px rgba(185, 28, 28, 0.3);
         }
-
         .process-btn:active {
             transform: translateY(0);
-        }
-
-        .process-btn i {
-            font-size: 18px;
         }
 
         /* LOADING */
@@ -429,12 +393,11 @@
             text-align: center;
             margin: 20px 0;
         }
-
         .spinner {
             width: 30px;
             height: 30px;
-            border: 3px solid rgba(220, 38, 38, 0.1);
-            border-top: 3px solid #dc2626;
+            border: 3px solid rgba(185, 28, 28, 0.1);
+            border-top: 3px solid #b91c1c;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 10px;
@@ -446,14 +409,12 @@
             display: none;
             animation: fadeInUp 0.5s ease;
         }
-
         .preview img {
             width: 100%;
             border-radius: 18px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             margin-bottom: 15px;
         }
-
         .video-info {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 14px;
@@ -463,18 +424,16 @@
             color: #8A94A6;
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
-
         .btn-group {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
-
         .btn-group button {
             padding: 14px;
             border: none;
             border-radius: 18px;
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            background: linear-gradient(135deg, #b91c1c, #991b1b);
             color: white;
             font-weight: 600;
             font-size: 14px;
@@ -485,14 +444,9 @@
             justify-content: center;
             gap: 10px;
         }
-
         .btn-group button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
-        }
-
-        .btn-group button i {
-            font-size: 16px;
+            box-shadow: 0 10px 20px rgba(185, 28, 28, 0.3);
         }
 
         /* FOOTER */
@@ -504,15 +458,9 @@
             color: #8A94A6;
             animation: fadeInUp 0.5s ease 0.15s both;
         }
-
         .footer a {
-            color: #dc2626;
+            color: #b91c1c;
             text-decoration: none;
-        }
-
-        .footer i {
-            font-size: 12px;
-            margin-right: 4px;
         }
 
         /* TOAST */
@@ -527,10 +475,9 @@
             gap: 8px;
             pointer-events: none;
         }
-
         .toast {
             background: #121218;
-            border-left: 3px solid #dc2626;
+            border-left: 3px solid #b91c1c;
             border-radius: 14px;
             padding: 14px 18px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -541,91 +488,101 @@
             max-width: 400px;
             margin-left: auto;
         }
-
         .toast.show {
             transform: translateX(0);
         }
-
         .toast.warning {
             border-left-color: #f59e0b;
         }
-
         .toast-header {
             display: flex;
             align-items: center;
             gap: 12px;
             margin-bottom: 6px;
         }
-
         .toast-header i {
             font-size: 16px;
-            color: #dc2626;
+            color: #b91c1c;
         }
-
         .toast.warning .toast-header i {
             color: #f59e0b;
         }
-
         .toast-header h4 {
             font-size: 13px;
             font-weight: 600;
-            color: #FFFFFF;
         }
-
         .toast p {
             font-size: 12px;
             color: #8A94A6;
             margin-left: 28px;
         }
 
-        /* BOTTOM BAR */
-        .bottom-bar {
+        /* BOTTOM NAV - SAMA KAYA DASHBOARD */
+        .bottom-nav {
             position: fixed;
             bottom: 20px;
             left: 20px;
             right: 20px;
-            height: 65px;
+            height: 70px;
             background: rgba(18, 18, 24, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 40px;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
             z-index: 100;
             max-width: 500px;
             margin: 0 auto;
-            padding: 0 20px;
         }
-
-        .logo-download {
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #8A94A6;
+            gap: 4px;
+            padding: 8px 0;
+            width: 25%;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .nav-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
-
-        .logo-download i {
-            font-size: 22px;
-            color: #dc2626;
+        .nav-item i {
+            font-size: 20px;
         }
-
-        .logo-download span {
-            font-size: 14px;
-            font-weight: 600;
+        .nav-item span {
+            font-size: 10px;
+            font-weight: 500;
+        }
+        .nav-item.active .nav-icon {
+            background: #b91c1c;
+            transform: translateY(-6px);
+            box-shadow: 0 5px 15px rgba(185, 28, 28, 0.3);
+        }
+        .nav-item.active i {
             color: white;
         }
-
-        .status-download {
-            background: rgba(220, 38, 38, 0.1);
-            border: 1px solid rgba(220, 38, 38, 0.2);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 12px;
-            color: #dc2626;
+        .nav-item.active span {
+            color: #b91c1c;
+            font-weight: 600;
+        }
+        .nav-item:hover:not(.active) .nav-icon {
+            background: rgba(185, 28, 28, 0.1);
+            transform: translateY(-3px);
+        }
+        .nav-item:hover:not(.active) i {
+            color: #b91c1c;
         }
 
-        /* SCROLLBAR */
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -639,19 +596,18 @@
     </style>
 </head>
 <body>
-    <!-- TOP BAR (TANPA GARIS 3) -->
+    <!-- TOP BAR -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <div class="page-title">
-                GOJO <span>DOWNLOADER</span>
-            </div>
+            <div class="menu-btn"><i class="fa-solid fa-bars"></i></div>
+            <div class="page-title">GOJO <span>DOWNLOADER</span></div>
+            <div class="top-bar-right"></div>
         </div>
     </div>
 
     <div class="container">
         <!-- HOME SCREEN -->
         <div class="screen active" id="home">
-            <!-- BANNER -->
             <div class="banner">
                 <div class="banner-img"></div>
                 <div class="banner-overlay"></div>
@@ -661,40 +617,24 @@
                         <p>Free & Fast Download</p>
                     </div>
                     <div class="banner-stats">
-                        <div class="banner-stat">
-                            <i class="fa-regular fa-clock"></i>
-                            <span>GRATIS</span>
-                        </div>
-                        <div class="banner-stat">
-                            <i class="fa-solid fa-bolt"></i>
-                            <span>CEPAT</span>
-                        </div>
+                        <div class="banner-stat"><i class="fa-regular fa-clock"></i><span>GRATIS</span></div>
+                        <div class="banner-stat"><i class="fa-solid fa-bolt"></i><span>CEPAT</span></div>
                     </div>
                 </div>
             </div>
 
-            <!-- INFO CARD -->
             <div class="info-card">
                 <div class="info-header">
                     <i class="fa-solid fa-circle-info"></i>
                     <h2>INFO DOWNLOADER</h2>
                 </div>
-                <div class="info-desc">
-                    Pilih platform, masukkan link, download video/audio gratis tanpa watermark.
-                </div>
+                <div class="info-desc">Pilih platform, masukkan link, download video/audio gratis tanpa watermark.</div>
                 <div class="info-stats">
-                    <div class="info-stat">
-                        <span>STATUS</span>
-                        <strong>ONLINE</strong>
-                    </div>
-                    <div class="info-stat">
-                        <span>PLATFORM</span>
-                        <strong>3 menu downloader</strong>
-                    </div>
+                    <div class="info-stat"><span>STATUS</span><strong>ONLINE</strong></div>
+                    <div class="info-stat"><span>PLATFORM</span><strong>3 menu</strong></div>
                 </div>
             </div>
 
-            <!-- GRID PLATFORM -->
             <div class="grid-platform">
                 <div class="platform-card" onclick="openPage('tiktok')">
                     <i class="fab fa-tiktok"></i>
@@ -713,16 +653,12 @@
                 </div>
             </div>
 
-            <div class="footer">
-                © 2026 · <a href="https://t.me/CENTRALVEX" target="_blank">GojoApp</a>
-            </div>
+            <div class="footer">© 2026 · <a href="https://t.me/CENTRALVEX" target="_blank">GojoApp</a></div>
         </div>
 
         <!-- DOWNLOADER SCREEN -->
         <div class="screen" id="downloader">
-            <div class="back" onclick="back()">
-                <i class="fas fa-arrow-left"></i> Kembali
-            </div>
+            <div class="back" onclick="back()"><i class="fas fa-arrow-left"></i> Kembali</div>
 
             <div class="input-card">
                 <div class="input-box">
@@ -733,8 +669,7 @@
                 </div>
 
                 <button class="process-btn" onclick="process()">
-                    <i class="fa-solid fa-download"></i>
-                    PROSES
+                    <i class="fa-solid fa-download"></i> PROSES
                 </button>
 
                 <div class="loading" id="loading">
@@ -749,58 +684,42 @@
                 </div>
             </div>
 
-            <div class="footer">
-                <i class="far fa-copyright"></i> 2026 · <a href="https://t.me/CENTRALVEX" target="_blank">GojoApp</a>
-            </div>
+            <div class="footer"><i class="far fa-copyright"></i> 2026 · <a href="https://t.me/CENTRALVEX" target="_blank">GojoApp</a></div>
         </div>
     </div>
 
-    <!-- BOTTOM BAR -->
-    <div class="bottom-bar">
-        <div class="logo-download">
-            <i class="fa-solid fa-download"></i>
-            <span>DOWNLOADER</span>
-        </div>
-        <div class="status-download">
-            <i class="fa-regular fa-circle-check"></i> READY
-        </div>
-    </div>
+    <!-- BOTTOM NAV - SAMA KAYA DASHBOARD -->
+    <nav class="bottom-nav">
+        <div class="nav-item" id="navHome"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span>HOME</span></div>
+        <div class="nav-item active" id="navDownloader"><div class="nav-icon"><i class="fa-solid fa-download"></i></div><span>DOWNLOADER</span></div>
+        <div class="nav-item" id="navBug"><div class="nav-icon"><i class="fa-solid fa-skull"></i></div><span>BUG TOOLS</span></div>
+        <div class="nav-item" id="navLogout"><div class="nav-icon"><i class="fa-solid fa-right-from-bracket"></i></div><span>LOGOUT</span></div>
+    </nav>
 
-    <!-- TOAST CONTAINER -->
     <div class="toast-container" id="toastContainer"></div>
 
     <script>
-        // TOAST
         const toastContainer = document.getElementById('toastContainer');
         
         function showToast(message, type = 'info') {
             const toast = document.createElement('div');
             toast.className = `toast ${type === 'warning' ? 'warning' : ''}`;
-            
             const icon = type === 'warning' ? 'fa-triangle-exclamation' : 'fa-circle-info';
             const title = type === 'warning' ? 'PERINGATAN' : 'INFORMASI';
-            
-            toast.innerHTML = `
-                <div class="toast-header">
-                    <i class="fa-solid ${icon}"></i>
-                    <h4>${title}</h4>
-                </div>
-                <p>${message}</p>
-            `;
-            
+            toast.innerHTML = `<div class="toast-header"><i class="fa-solid ${icon}"></i><h4>${title}</h4></div><p>${message}</p>`;
             toastContainer.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.classList.add('show');
-            }, 10);
-            
+            setTimeout(() => toast.classList.add('show'), 10);
             setTimeout(() => {
                 toast.classList.remove('show');
-                setTimeout(() => {
-                    toast.remove();
-                }, 300);
+                setTimeout(() => toast.remove(), 300);
             }, 3000);
         }
+
+        // NAVIGASI KE PAGE LAIN
+        document.getElementById('navHome').onclick = () => window.location.href = '/dashboard';
+        document.getElementById('navDownloader').onclick = () => window.location.href = '/downloader';
+        document.getElementById('navBug').onclick = () => window.location.href = '/execution';
+        document.getElementById('navLogout').onclick = () => window.location.href = '/logout';
 
         let mode = '';
         let videoData = null;
@@ -820,11 +739,7 @@
 
         async function process() {
             const url = document.getElementById('url').value.trim();
-            
-            if (!url) {
-                showToast('Masukkan link terlebih dahulu!', 'warning');
-                return;
-            }
+            if (!url) { showToast('Masukkan link terlebih dahulu!', 'warning'); return; }
 
             document.getElementById('loading').style.display = 'block';
             document.getElementById('preview').style.display = 'none';
@@ -834,9 +749,7 @@
                 if (mode === 'tiktok') {
                     const res = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`);
                     const data = await res.json();
-                    
                     if (data.code !== 0) throw new Error('Gagal ambil data');
-                    
                     videoData = {
                         video: data.data.play,
                         audio: data.data.music,
@@ -844,94 +757,44 @@
                         thumbnail: data.data.cover,
                         author: data.data.author?.nickname
                     };
-                    
                     document.getElementById('thumb').src = videoData.thumbnail;
-                    document.getElementById('videoInfo').innerHTML = `
-                        <i class="fas fa-user"></i> ${videoData.author || 'Unknown'}<br>
-                        <small>${videoData.title.substring(0, 60)}...</small>
-                    `;
-                    
+                    document.getElementById('videoInfo').innerHTML = `<i class="fas fa-user"></i> ${videoData.author || 'Unknown'}<br><small>${videoData.title.substring(0, 60)}...</small>`;
                     document.getElementById('btnGroup').innerHTML = `
-                        <button onclick="downloadVideo('video')">
-                            <i class="fas fa-video"></i> Download Video
-                        </button>
-                        <button onclick="downloadVideo('audio')">
-                            <i class="fas fa-music"></i> Download Audio
-                        </button>
+                        <button onclick="downloadVideo('video')"><i class="fas fa-video"></i> Download Video</button>
+                        <button onclick="downloadVideo('audio')"><i class="fas fa-music"></i> Download Audio</button>
                     `;
                 }
-                
                 else if (mode === 'youtube') {
                     videoData = { url: url };
-                    
                     let videoId = '';
-                    if (url.includes('youtu.be/')) {
-                        videoId = url.split('youtu.be/')[1].split('?')[0];
-                    } else if (url.includes('v=')) {
-                        videoId = url.split('v=')[1].split('&')[0];
-                    }
-                    
-                    document.getElementById('thumb').src = videoId ? 
-                        `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : 
-                        'https://via.placeholder.com/600x340?text=YouTube';
-                    
-                    document.getElementById('videoInfo').innerHTML = `
-                        <i class="fab fa-youtube" style="color: #FF0000;"></i> YouTube Video
-                    `;
-                    
+                    if (url.includes('youtu.be/')) videoId = url.split('youtu.be/')[1].split('?')[0];
+                    else if (url.includes('v=')) videoId = url.split('v=')[1].split('&')[0];
+                    document.getElementById('thumb').src = videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : 'https://via.placeholder.com/600x340?text=YouTube';
+                    document.getElementById('videoInfo').innerHTML = `<i class="fab fa-youtube" style="color: #FF0000;"></i> YouTube Video`;
                     document.getElementById('btnGroup').innerHTML = `
-                        <button onclick="downloadYouTube('mp4')">
-                            <i class="fas fa-video"></i> Download MP4
-                        </button>
-                        <button onclick="downloadYouTube('mp3')">
-                            <i class="fas fa-music"></i> Download MP3
-                        </button>
+                        <button onclick="downloadYouTube('mp4')"><i class="fas fa-video"></i> Download MP4</button>
+                        <button onclick="downloadYouTube('mp3')"><i class="fas fa-music"></i> Download MP3</button>
                     `;
                 }
-                
                 else if (mode === 'instagram') {
                     videoData = { url: url };
                     document.getElementById('thumb').src = 'https://via.placeholder.com/600x600?text=Instagram+Media';
-                    document.getElementById('videoInfo').innerHTML = `
-                        <i class="fab fa-instagram"></i> Instagram Media
-                    `;
-                    
-                    document.getElementById('btnGroup').innerHTML = `
-                        <button onclick="downloadInstagram()">
-                            <i class="fas fa-download"></i> Download Media
-                        </button>
-                    `;
+                    document.getElementById('videoInfo').innerHTML = `<i class="fab fa-instagram"></i> Instagram Media`;
+                    document.getElementById('btnGroup').innerHTML = `<button onclick="downloadInstagram()"><i class="fas fa-download"></i> Download Media</button>`;
                 }
-                
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('preview').style.display = 'block';
-                
             } catch (error) {
                 document.getElementById('loading').style.display = 'none';
                 showToast('Gagal memproses video!', 'warning');
-                console.error(error);
             }
         }
 
-        function downloadVideo(type) {
-            if (!videoData) return;
-            window.open(type === 'video' ? videoData.video : videoData.audio, '_blank');
-        }
+        function downloadVideo(type) { if (!videoData) return; window.open(type === 'video' ? videoData.video : videoData.audio, '_blank'); }
+        function downloadYouTube(format) { if (!videoData) return; window.open(`https://savethevideo.com/id?url=${encodeURIComponent(videoData.url)}`, '_blank'); }
+        function downloadInstagram() { if (!videoData) return; window.open(`https://savethevideo.com/id?url=${encodeURIComponent(videoData.url)}`, '_blank'); }
 
-        function downloadYouTube(format) {
-            if (!videoData) return;
-            window.open(`https://savethevideo.com/id?url=${encodeURIComponent(videoData.url)}`, '_blank');
-        }
-
-        function downloadInstagram() {
-            if (!videoData) return;
-            window.open(`https://savethevideo.com/id?url=${encodeURIComponent(videoData.url)}`, '_blank');
-        }
-
-        // Enter key
-        document.getElementById('url').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') process();
-        });
+        document.getElementById('url').addEventListener('keypress', (e) => { if (e.key === 'Enter') process(); });
     </script>
 </body>
 </html>
